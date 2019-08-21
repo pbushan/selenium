@@ -18,5 +18,12 @@ Apply executable permissions to the binary:
 # Use docker-compose to get the selenium grid up and running
 > sudo docker-compose -f servergrid.yaml up -d
 
+# Use docker-compose to scale the grid nodes
+for example if you want to scale the number of chrome nodes to `5` then use
+> sudo docker-compose -f servergrid.yaml scale chrome=5
+
+# To check status of the grid use
+> sudo docker-compose -f servergrid.yaml ps
+
 # If you need to bring down the grid use
 > sudo docker-compose -f servergrid.yaml down
