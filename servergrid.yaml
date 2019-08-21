@@ -4,7 +4,7 @@ services:
   hub:
     image: selenium/hub
     ports:
-      - 4444:4444
+    - 4444:4444
       labels:
         selenium.grid.type: "hub"
         selenium.grid.hub: "true"
