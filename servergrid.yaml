@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  hub:
+    image: selenium/hub
+    ports:
+      - 4444:4444
+      labels:
+        selenium.grid.type: "hub"
+        selenium.grid.hub: "true"
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+  chrome:
+    image: selenium/node-chrome
+    depends_on:
+      - hub
+    environment:
+      HUB_PORT_4444_TCP_ADDR: hub
+      HUB_PORT_4444_TCP_PORT: 4444
+    deploy:
+      mode: replicated
+      replicas: 3
+      labels:
+        selenium.grid.type: "node"
+        selenium.grid.node: "true"
+        selenium.grid.node.type: "chrome"
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
