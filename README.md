@@ -2,6 +2,29 @@
 Instructions to configure scalable selenium grid using docker-compose
 
 # For fresh Installation only (On all hosts)
+
+## Update PCF app (for Ultimate Software only)
+Update the application.properties with the following spring properties
+```
+# This is the frontend url of the app that we need to test
+app.web.url=<app front end URL>
+
+#Selenium assert timeout in seconds
+app.assert.timeout=20
+
+#If you need to run the app locally on your machine, set this to true an see the chrome browser in action.
+selenium.driver.is.local=false
+
+#Spring app name does not change
+spring.application.name=Tachyon
+
+#We're using ribbon load balancing without eureka discovery service.
+ribbon.eureka.enabled=false
+
+#Once the servers are created on openstack, update this with the list of selenium hubs. The default to port 4444.
+ribbon.listOfServers=<server_name1>:<port>,<server_name2>:<port>
+```
+
 ## Install Docker 
 First install docker on all host machines.eg Server 1,2
 > curl -SsL https://get.docker.com | sh
@@ -33,18 +56,6 @@ for example if you want to scale the number of chrome nodes to `5` then use
 
 ## If you need to bring down the grid use
 > sudo docker-compose -f servergrid.yaml down
-
-# On nginx host only (Will refer to this as manager)
-
-## Download .yaml file
-> curl https://raw.githubusercontent.com/pbushan/selenium/master/nginx.yaml > nginx.yaml
-
-## Download and edit nginx configuration file
-> curl https://raw.githubusercontent.com/pbushan/selenium/master/nginx.conf > nginx.conf
-Use nano editor to change the servername and ports for each server that needs load balancing
-
-## Use docker-compose to get the nginx container up and running
-> sudo docker-compose -f nginx.yaml up -d
 
 
 # To monitor host resource utilization
