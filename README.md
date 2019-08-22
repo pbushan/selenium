@@ -1,5 +1,5 @@
 # selenium
-yaml file to deploy selenium grid in docker containers
+Instructions to configure scalable selenium grid using docker-compose
 
 # Install Docker 
 First install docker on all host machines.eg Server 1,2
@@ -16,7 +16,11 @@ Apply executable permissions to the binary:
 > sudo chmod +x /usr/local/bin/docker-compose
 
 # Download .yaml file
-> wget https://raw.githubusercontent.com/pbushan/selenium/master/servergrid.yaml
+> curl https://raw.githubusercontent.com/pbushan/selenium/master/servergrid.yaml > servergrid.yaml
+
+# Download and edit nginx configuration file (only on master node)
+> curl https://raw.githubusercontent.com/pbushan/selenium/master/nginx.conf > nginx.conf
+Use nano editor to change the servername and ports for each server that needs load balancing
 
 # Use docker-compose to get the selenium grid up and running
 > sudo docker-compose -f servergrid.yaml up -d
