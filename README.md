@@ -37,14 +37,14 @@ for example if you want to scale the number of chrome nodes to `5` then use
 # On nginx host only (Will refer to this as manager)
 
 ## Download .yaml file
-> curl https://raw.githubusercontent.com/pbushan/selenium/master/servergrid.yaml > servergrid.yaml
+> curl https://raw.githubusercontent.com/pbushan/selenium/master/nginx.yaml > nginx.yaml
 
 ## Download and edit nginx configuration file
 > curl https://raw.githubusercontent.com/pbushan/selenium/master/nginx.conf > nginx.conf
 Use nano editor to change the servername and ports for each server that needs load balancing
 
 ## Use docker-compose to get the nginx container up and running
-> sudo docker-compose -f servergrid.yaml up -d
+> sudo docker-compose -f nginx.yaml up -d
 
 
 # To monitor host resource utilization
