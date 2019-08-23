@@ -18,7 +18,8 @@ sudo usermod -aG docker ubuntu \
     && sudo chmod +x /usr/local/bin/docker-compose \
     && printf '\nDocker Compose installed successfully\n\n'
 # Download prometheus.yml
-sudo curl https://raw.githubusercontent.com/pbushan/selenium/master/prometheus.yml > prometheus.yml\
+sleep 10
+sudo curl https://raw.githubusercontent.com/pbushan/selenium/master/prometheus.yml > prometheus.yml \
 # Install Selenium Grid
 curl https://raw.githubusercontent.com/pbushan/selenium/master/servergrid.yaml > servergrid.yaml \
 && sudo docker-compose -f servergrid.yaml up -d \
