@@ -18,10 +18,11 @@ sudo usermod -aG docker ubuntu \
     && sudo chmod +x /usr/local/bin/docker-compose \
     && printf '\nDocker Compose installed successfully\n\n'
 # Download prometheus.yml
-&& sudo curl https://raw.githubusercontent.com/pbushan/selenium/master/prometheus.yml > prometheus.yml\
+sudo curl https://raw.githubusercontent.com/pbushan/selenium/master/prometheus.yml > prometheus.yml\
 # Install Selenium Grid
-&& curl https://raw.githubusercontent.com/pbushan/selenium/master/servergrid.yaml > servergrid.yaml \
+curl https://raw.githubusercontent.com/pbushan/selenium/master/servergrid.yaml > servergrid.yaml \
 && sudo docker-compose -f servergrid.yaml up -d \
+&& printf '\nSelenium grid installed successfully\n\n'
 
 #Scale the chrome nodes per instance
 && sudo docker-compose -f servergrid.yaml scale chrome=10
