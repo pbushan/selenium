@@ -27,4 +27,4 @@ curl https://raw.githubusercontent.com/pbushan/selenium/master/servergrid.yaml >
 
 sleep 5
 #Scale the chrome nodes per instance
-udo docker-compose -f servergrid.yaml scale chrome=10
+sudo docker-compose -f servergrid.yaml scale chrome=10
