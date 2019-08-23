@@ -12,3 +12,11 @@ services:
     environment:
       HUB_PORT_4444_TCP_ADDR: hub
       HUB_PORT_4444_TCP_PORT: 4444
+  prometheus:
+    image: prom/prometheus
+    volumes:
+        - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+        - '-config.file=/etc/prometheus/prometheus.yml'
+    ports:
+        - '9090:9090'
