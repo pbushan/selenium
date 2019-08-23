@@ -21,5 +21,9 @@ services:
         - '--config.file=/etc/prometheus/prometheus.yml'
     ports:
         - '9090:9090'
+  node-exporter:
+        image: prom/node-exporter
+        ports:
+            - '9100:9100'        
 volumes:
         prometheus_data: {}
