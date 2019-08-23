@@ -58,7 +58,7 @@ for example if you want to scale the number of chrome nodes to `5` then use
 > sudo docker-compose -f servergrid.yaml down
 
 # Alternatively use bash script
-` sudo curl https://raw.githubusercontent.com/pbushan/selenium/master/ubuntu-docker-seleniumgrid.sh > ubuntu-docker-seleniumgrid.sh`
+> ` sudo curl https://raw.githubusercontent.com/pbushan/selenium/master/ubuntu-docker-seleniumgrid.sh > ubuntu-docker-seleniumgrid.sh`
 > sh ubuntu-docker-seleniumgrid.sh
 > sudo reboot
 > sudo docker-compose -f servergrid.yaml up -d
