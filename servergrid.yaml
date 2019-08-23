@@ -8,26 +8,21 @@ services:
   chrome:
     image: selenium/node-chrome
     depends_on:
-      - hub
+    - hub
     environment:
       HUB_PORT_4444_TCP_ADDR: hub
       HUB_PORT_4444_TCP_PORT: 4444
-  prometheus:
-    image: prom/prometheus:latest
-    depends_on:
-      - chrome
-    volumes:
-        - /home/ubuntu/prometheus.yml:/etc/prometheus/prometheus.yml
-        - ./prometheus_data:/prometheus
-    command:
-        - '--config.file=/etc/prometheus/prometheus.yml'
-    ports:
-        - '9090:9090'
-  node-exporter:
-        image: prom/node-exporter
-        depends_on:
-      - prometheus
-        ports:
-            - '9100:9100'        
-volumes:
-        prometheus_data: {}
+  telegraf:
+  image: telegraf
+  restart: always
+  environment:
+    HOST_PROC: /rootfs/proc
+    HOST_SYS: /rootfs/sys
+    HOST_ETC: /rootfs/etc
+  hostname: localhost
+  volumes:
+   - /home/ubuntu/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+   - /var/run/docker.sock:/var/run/docker.sock:ro
+   - /sys:/rootfs/sys:ro
+   - /proc:/rootfs/proc:ro
+   - /etc:/rootfs/etc:ro
