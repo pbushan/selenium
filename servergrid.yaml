@@ -13,7 +13,7 @@ services:
       HUB_PORT_4444_TCP_ADDR: hub
       HUB_PORT_4444_TCP_PORT: 4444
   prometheus:
-    image: prom/prometheus:v2.11.1
+    image: prom/prometheus:latest
     depends_on:
       - chrome
     volumes:
