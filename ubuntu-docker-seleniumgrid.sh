@@ -25,5 +25,6 @@ curl https://raw.githubusercontent.com/pbushan/selenium/master/servergrid.yaml >
 && sudo docker-compose -f servergrid.yaml up -d \
 && printf '\nSelenium grid installed successfully\n\n'
 
+sleep 5
 #Scale the chrome nodes per instance
 && sudo docker-compose -f servergrid.yaml scale chrome=10
