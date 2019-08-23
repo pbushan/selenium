@@ -25,5 +25,6 @@ sudo apt install git
 
 # Install Graphana
 git clone https://github.com/BushnevYuri/DockerGrafanaInfluxKit \
+&& cd DockerGrafanaInfluxKit \
 && sudo docker-compose up \
 && printf '\nGraphana Influx kit installed successfully\n\n'
