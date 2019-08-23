@@ -19,6 +19,9 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-
     && printf '\nDocker Compose installed successfully\n\n'
 
 sleep 10    
+# Install GIT
+sudo apt update
+&& sudo apt install git
 
 # Install Graphana
 git clone https://github.com/BushnevYuri/DockerGrafanaInfluxKit \
